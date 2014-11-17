@@ -9,7 +9,7 @@ class Model {
           if(!empty($db_connect_params)){  
              
               //include_once $db_config_file;
-			  $dsn = "mysql:dbname=" . $db_connect_params['database'] . ";host=127.0.0.1";
+			  $dsn = "mysql:dbname=" . $db_connect_params['database'] . ";host=" . $db_connect_params['host'];
 				$user = $db_connect_params['user'];
 				$password = $db_connect_params['password'];
             try {

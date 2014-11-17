@@ -3,7 +3,7 @@
 class SystemShellController {
 	
 	private $__consoleArgs;
-	private $__localMethods = array("help", "version", "create_modules");
+	private $__localMethods = array("help", "version", "createModules", "showModules");
 	public function __construct($args) {
 			$this->__consoleArgs = $args;
 	}
@@ -40,11 +40,11 @@ class SystemShellController {
 	public function showVersion() {
 		$versionsMsg = "";
 		$versionsMsg .="Welcome to Rudicon" . "\n";
-		$versionsMsg .="A Simple Rudimentary Console App by Rizky RIdwan";
+		$versionsMsg .="A Simple Rudimentary Console App by Rizky Ridwan";
 		$versionsMsg .="\n";
 		$versionsMsg .="Contact Me @ dragonclaw79@googlemail.com";
 		$versionsMsg .="\n";
-		$versionsMsg .="Version0.1beta";
+		$versionsMsg .="Version 0.2 beta";
 		$versionsMsg .="\n";
 		echo $versionsMsg;
 	}
@@ -81,6 +81,64 @@ class SystemShellController {
 	public function help() {
 		echo "help";
 		echo "\n";
+	}
+	public function showModules() {
+		$msg = "";
+		$msg .= "Available Modules:\n";
+		if ($handle = opendir(START_PATH)) {
+			 while (false !== ($file = readdir($handle))) {
+			   if ($file != "." && $file != "..") {
+				echo "$file\n";
+			   }
+				
+			}
+		}
+		closedir($handle);
+		exit(0);
+	}
+	
+	public function createModules() {
+		if (isset($this->__consoleArgs[2])) {
+			$moduleName = $this->__consoleArgs[2];
+			mkdir(START_PATH . $moduleName);
+			mkdir(START_PATH . $moduleName . "/config");
+			mkdir(START_PATH . $moduleName . "/controller");
+			mkdir(START_PATH . $moduleName . "/model");
+			mkdir(START_PATH . $moduleName . "/model/config");
+			mkdir(START_PATH . $moduleName . "/view");
+			$this->__createFile(START_PATH . $moduleName . "/" . $moduleName, ".php");
+			$srcConfigDb = START_PATH . "myconsole/model/config/database.php";
+			$dstConfigDb = START_PATH . $moduleName . "/model/config/database.php";
+			$this->__copyFiles($srcConfigDb, $dstConfigDb);
+			$srcBaseModel = START_PATH . "myconsole/model/BaseModel.php";
+			$dstBaseModel = START_PATH . $moduleName . "/model/BaseModel.php";
+			$this->__copyFiles($srcBaseModel, $dstBaseModel);
+			echo "Project " . $moduleName . " created\n";
+			exit();
+		}
+	}
+	
+	private function __createFile($fileName = "default", $ext = ".php") {
+	
+		$handle = fopen($fileName . $ext, "w+");
+		if (!$handle) {
+			die("Cannot create " . $fileName . $ext);
+			fclose($handle);
+		} else {
+			$text = "\xEF\xBB\xBF";
+			$text .= "<?php";
+			$text .= "\n\n";
+			$text .= "?>";
+			fputs($handle, $text);
+		}
+		fclose($handle);
+	}
+	
+	private function __copyFiles($src, $dest) {
+		$cp = copy($src, $dest);
+		if (!$cp) {
+			die("Copy Error!");
+		}
 	}
 	
 	

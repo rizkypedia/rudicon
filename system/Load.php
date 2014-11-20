@@ -33,6 +33,56 @@ class Load {
 		}
 			return $modelInstances;
 	}
+	
+	 public function viewHelper($fileName, $pathToHelper = "", $type = "INSTANCE") {
+		
+		$class_type = array("INSTANCE","STATIC");
+		$Instance = null;
+		
+        if(!empty($fileName) && in_array(trim($type), $class_type)){
+            	
+			if($type == "INSTANCE"){
+                            
+                if(empty($pathToHelper)){
+					include APP_PATH_VIEW.'/helper/'.$fileName.".php";
+                }else{
+                    include $pathToHelper."/".$fileName.".php";
+                }
+				$ins_string = $fileName;
+				$Instance = new $ins_string();    
+
+			}else{
+                                    
+                if(empty($pathToHelper)){
+					include APP_PATH_VIEW.'/helper/'.$fileName.".php";
+                }else{
+                    include $pathToHelper."/".$fileName.".php";
+                }
+				//include APP_PATH_VIEW.'/helper/'.$fileName.".php";
+				
+			}
+        }
+		
+		return $Instance;
+		
+    }
+    
+    public function library($classname){
+    	
+    	$lib = LIB_PATH . "/".ucfirst($classname).".php";
+
+    	
+    	if(!empty($classname)){
+    		if(file_exists($lib)){
+    			include_once $lib;	
+    			$ins_string = ucfirst($classname);
+    			$Instance = new $ins_string();
+    			return $Instance;
+    		
+    		}
+    	}
+    	
+    }
 		
 		
 	

@@ -1,6 +1,8 @@
 <?php
 
+
 define('APP_PATH', dirname(__FILE__));
+define('APP_MODULE_NAME', 'myconsole');
 define('APP_PATH_VIEW', APP_PATH . "/view");
 define('APP_PATH_MODEL', APP_PATH . "/model");
 /*DB COnfig*/

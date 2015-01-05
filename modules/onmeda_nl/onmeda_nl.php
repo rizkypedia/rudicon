@@ -1,0 +1,10 @@
+<?php
+define('APP_PATH', dirname(__FILE__));
+define('APP_PATH_VIEW', APP_PATH . "/view");
+define('APP_PATH_MODEL', APP_PATH . "/model");
+/*DB COnfig*/
+define('DB_CONFIG_PATH', APP_PATH . "/model/config/database.php");
+//require DB_CONFIG_PATH;
+define('APP_CONFIG', APP_PATH . "/module.config.json");
+define('APP_PATH_CONTROLLER', APP_PATH . "/controller");
+define('HEALTHCARE_INFO', APP_PATH . "/config/healthcare_dates.php");

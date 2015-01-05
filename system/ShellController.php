@@ -11,6 +11,10 @@ class ShellController {
 		$this->load = new Load();
 		//$this->model = new BaseModel(DB_CONFIG_PATH . "/database.php");
 	}
+
+	public function printLine($msg = "") {
+		echo $msg . "\n";
+	}
 	
 }
 ?>

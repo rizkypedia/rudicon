@@ -1,11 +1,11 @@
 <?php
 
 class ImportController extends ShellController {
-	
+
 	public function aspFilesAction () {
 		$data['headerTitle'] = "Asp Import";
 		$data['msg'] = "";
-		
+
 		$checkFile = file_exists(JSONFILENAME);
 
 		if ($checkFile) {
@@ -18,10 +18,10 @@ class ImportController extends ShellController {
 			$this->__parse($allSites);
 
 		}
-		
+
 		$this->load->view(__METHOD__, $data);
 	}
-	
+
 	private function __parse($obj) {
 
 		foreach ($obj as $siteName => $value) {
@@ -34,8 +34,9 @@ class ImportController extends ShellController {
 						$param['DOMAIN'] = $values->{"DOMAIN"};
 						$param['SECTION'] = $values->{"SECTION"};
 						$param['TOOLNAME'] = $values->{"TOOLNAME"};
-						//$param['FILENAME'] = $values->{"FILENAME"};
-						$param['FILENAME'] = "default6.asp";
+						$param['FILENAME'] = $values->{"FILENAME"};
+						$param['URL'] = $values->{"URL"};
+						//$param['FILENAME'] = "default6.asp";
 						$param['TYPE'] = $values->{"TYPE"};
 						$param['SITENAME'] = $values->{"SITENAME"};
 						$param['HOST'] = "http://www." . $values->{"SITENAME"} . "." . $values->{"DOMAIN"};
@@ -60,8 +61,8 @@ class ImportController extends ShellController {
 		if (file_exists($pathToCopy)) {
 			$source = (!$mobileFile ? ASP_DEFAULT_FILE : ASP_MOB_DEFAULT_FILE);
 			$wholeFile = file_get_contents($source);
-			$search = array("##TYPE##", "##SECTION##", "##TOOLNAME##", "##FILENAME##", "##HOST##");
-			$replace = array($param['TYPE'], $param['SECTION'], $param['TOOLNAME'], $param['FILENAME'], $param['HOST']);
+			$search = array("##TYPE##", "##SECTION##", "##TOOLNAME##", "##FILENAME##", "##HOST##", "##URL##");
+			$replace = array($param['TYPE'], $param['SECTION'], $param['TOOLNAME'], $param['FILENAME'], $param['HOST'], $param['URL']);
 			$fileName = $param['FILENAME'];
 			if ($mobileFile) {
 				//array_push($search, "##HOST##");

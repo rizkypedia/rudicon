@@ -134,12 +134,15 @@ class SystemShellController {
 		fclose($handle);
 	}
 	
+
+	
 	private function __copyFiles($src, $dest) {
 		$cp = copy($src, $dest);
 		if (!$cp) {
 			die("Copy Error!");
 		}
 	}
+	
 	
 	
 

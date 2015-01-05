@@ -21,7 +21,7 @@ class BaseModel extends Model {
 		//$sqlQuery .= "'%include \"quiz/javascript.php\";%'";
 		print "id" . "\t";
 		print "content" . "\n";
-
+	
 		foreach ($this->db_link->query($sqlQuery) as $row) {
 			print $row['id'] . "\t";
 			print $row['acp'] . "\t";
@@ -67,7 +67,7 @@ class BaseModel extends Model {
 			$replaceTag = str_replace("##ID##", $qId, $tag);
 			$strSql = "UPDATE article_chapter_pages SET content = '" . $replaceTag . "' WHERE id = " . $param['recordId'];
 			echo $strSql . "\n";
-			//$q = $this->db_link ->prepare($strSql);
+			//$q = $this->db_link->prepare($strSql);
 			//var_dump($q);
 			//$q->execute(array($replaceTag, $id));
 		}
@@ -75,14 +75,14 @@ class BaseModel extends Model {
 
 	private function __writeIdToFile($fileName, $id) {
 		$mode = "a+";
-		if (file_exists(APP_PATH . "/" . $fileName . '.txt')) {			
+		if (file_exists(APP_PATH . "/" . $fileName . '.txt')) {
 			//unlink(APP_PATH . "/" . $fileName . '.txt');
 		}
 		$fp = fopen(APP_PATH . "/" . $fileName . '.txt', $mode);
 		fwrite($fp, $id . "\n");
 		fclose($fp);
 	}
-	
+
 }
 
 ?>

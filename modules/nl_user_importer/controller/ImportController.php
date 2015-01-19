@@ -39,10 +39,10 @@ class ImportController extends ShellController {
 				$insert['user_unsubscribe_dt'] = $value->{"user_unsubscribe_dt"};
 				$insert['user_change_dt'] = $value->{"user_change_dt"};
 				$insert['customer_fid'] = $value->{"customer_fid"};
-				//echo $value->{"email"};
+				
 				$this->models['Base']->addData($insert, "health_care_reminders");
 				
-				$this->printLine();
+				$this->printLine($value->{"email"});
 			}
 		}
 	}
@@ -68,6 +68,7 @@ class ImportController extends ShellController {
 					$insert['user_unsubscribe_dt'] = $value->{"user_unsubscribe_dt"};
 					$insert['user_change_dt'] = $value->{"user_change_dt"};
 					$this->models['Base']->addData($insert, "fertility_reminders");
+					$this->printLine($value->{"email"});
 				}
 		}
 	}
@@ -95,6 +96,7 @@ class ImportController extends ShellController {
 				$insert["status"] = (int)$value->{'status'};
 				
 				$this->models['Base']->addData($insert, "indinl_users");
+				$this->printLine($value->{'email'});
 			}
 		}
 	}

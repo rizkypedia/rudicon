@@ -45,7 +45,7 @@ class BaseModel extends Model {
 		if (!empty($insertStr)) {
 			$q = $this->db_link->prepare($insertStr);
 			$q->execute($preparedData);
-			echo $insertStr;
+			//echo $insertStr;
 			//var_dump($preparedData);
 			//var_dump($q);
 		}

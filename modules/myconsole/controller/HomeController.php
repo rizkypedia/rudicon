@@ -9,7 +9,7 @@ class HomeController extends ShellController {
 		require DB_CONFIG_PATH;
 		
 		$this->uses = array("base");
-		$this->models = $this->load->dbModels(APP_PATH_MODEL, $this->uses, $db_connect_params);
+		//$this->models = $this->load->dbModels(APP_PATH_MODEL, $this->uses, $db_connect_params);
 
 	}
 	
@@ -31,5 +31,9 @@ class HomeController extends ShellController {
 
 		$this->load->view(__METHOD__, $data);
 	}
+        
+        public function goAction() {
+            echo "blablabla ";
+        }
 }
 ?>

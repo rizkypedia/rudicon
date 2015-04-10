@@ -85,6 +85,7 @@ class SystemShellController {
 	public function showModules() {
 		$msg = "";
 		$msg .= "Available Modules:\n";
+                echo $msg;
 		if ($handle = opendir(START_PATH)) {
 			 while (false !== ($file = readdir($handle))) {
 			   if ($file != "." && $file != "..") {

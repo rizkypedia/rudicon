@@ -8,5 +8,5 @@ define('DB_CONFIG_PATH', APP_PATH . "/model/config/database.php");
 define('APP_CONFIG', APP_PATH . "/module.config.json");
 define('APP_PATH_CONTROLLER', APP_PATH . "/controller");
 define('JSON_FILE_HCR', APP_PATH . "/model/hcr_users.txt");
-define('JSON_FILE_FTR', APP_PATH . "/model/ftr_users_current.txt");
-define('JSON_FILE_INDINL', APP_PATH . "/model/indinl_user_current.txt");
+define('JSON_FILE_FTR', APP_PATH . "/model/ftr_users.txt");
+define('JSON_FILE_INDINL', APP_PATH . "/model/indinl_users.txt");

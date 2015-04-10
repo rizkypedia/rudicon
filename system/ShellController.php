@@ -15,6 +15,11 @@ class ShellController {
 	public function printLine($msg = "") {
 		echo $msg . "\n";
 	}
+       
+        public function pprint($msg = "") {
+            echo $msg;
+        }
+       
 	
 }
 ?>

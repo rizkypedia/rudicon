@@ -5,7 +5,8 @@ class ShellController {
 	protected $model;
 	protected $uses;
 	protected $helpers;
-	
+	public $models;
+        private $usage;
 	public function __construct() {
 	
 		$this->load = new Load();
@@ -20,6 +21,30 @@ class ShellController {
             echo $msg;
         }
        
+        private function uses() {
+        
+            $this->usage = array();
+
+            if (is_array($this->models) && !empty($this->models)) {
+                foreach ($this->models as $src) {
+                    require APP_PATH_MODEL . "/" . $src . ".php";
+                    $data = new $src();
+                    if ($data instanceof Model) {
+                        $this->usage[$src] = $data;
+                    } else {                   
+
+                        $this->usage[$src] = $data;
+                        //check file type
+                    }
+                }
+            }
+        
+        //return $usage;
+        }
+        protected function getModels() {
+            return $this->usage;
+        }
+        
 	
 }
 ?>

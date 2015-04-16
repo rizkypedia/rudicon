@@ -17,6 +17,7 @@ define('LIB_PATH', ROOT_PATH . "/lib");
 
 
 /*System Classes*/
+include_once SYS_PATH . "/DataSource.php";
 include_once SYS_PATH . "/Model.php";
 include_once SYS_PATH . "/Load.php";
 //include_once APP_PATH . "/model/BaseModel.php";

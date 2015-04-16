@@ -10,7 +10,3 @@ define('DB_CONFIG_PATH', APP_PATH . "/model/config/database.php");
 //require DB_CONFIG_PATH;
 define('APP_CONFIG', APP_PATH . "/module.config.json");
 define('APP_PATH_CONTROLLER', APP_PATH . "/controller");
-
-
-
-?>

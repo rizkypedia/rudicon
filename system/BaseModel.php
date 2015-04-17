@@ -2,7 +2,7 @@
 
 class BaseModel extends Model{
 
-	 public function __construct($params){
+ public function __construct($params){
     
         parent::__construct($params);
     }

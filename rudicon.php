@@ -39,7 +39,7 @@ $systemCheck->checkArgs();
 $moduleName = $systemCheck->getCleanModuleName();
 $uri = $systemCheck->getArguments();
 
-require START_PATH . $moduleName . "/" . $moduleName . ".php";
+require START_PATH . $moduleName. "/" . $moduleName . ".php";
 
 $bos = new Bootstrap($uri);
 $bos->displayError("1");

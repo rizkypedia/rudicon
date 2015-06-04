@@ -67,7 +67,15 @@ class SystemShellController {
 	}
 	
 	private function __extractModuleName() {
-		return str_replace("-", "", $this->__consoleArgs[1]);
+		//return str_replace("-", "", $this->__consoleArgs[1]);
+            $param = str_replace("-","",$this->__consoleArgs[1]);
+            
+            if (strpos($param, ".") !== false) {
+                list($moduleName, $moduleComponent) = explode(".", $param);
+            } else {
+                die("Pleae use Object Notation for calling a module app: modulename.controller/action [param]");
+            }
+            return $moduleName;
 	}
 	
 	public function getCleanModuleName() {
@@ -77,6 +85,7 @@ class SystemShellController {
 	public function getArguments() {
 		$this->__consoleArgs[1] = str_replace("-", "", $this->__consoleArgs[1]);
 		return $this->__consoleArgs;
+            
 	}
 	public function help() {
 		echo "help";

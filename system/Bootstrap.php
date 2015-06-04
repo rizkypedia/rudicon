@@ -19,9 +19,9 @@ private $consoleRequest;
             if(!empty($this->consoleRequest) && count($this->consoleRequest) > 1){
 
             $rs = ConsoleArgSplitter::getInstance();
-            $args=$rs->split_request($this->consoleRequest);
-
-                if($args['ctrl']!="" || !empty($args['ctrl'])){
+            $args=$rs->parseRequest($this->consoleRequest);
+            
+            if($args['ctrl']!="" || !empty($args['ctrl'])){
 
                    require APP_PATH_CONTROLLER."/".ucfirst($args['ctrl'])."Controller.php";
                    $al = AutoLoad::getInstance();

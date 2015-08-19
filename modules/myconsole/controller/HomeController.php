@@ -1,7 +1,7 @@
 <?php
 class HomeController extends ShellController {
 
-	private $models;
+	public $models;
 	
 	public function __construct() {
 		

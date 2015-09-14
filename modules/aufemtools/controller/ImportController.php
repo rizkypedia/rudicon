@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 class ImportController extends ShellController {
     
@@ -63,6 +63,7 @@ class ImportController extends ShellController {
                                                  $param['PAGETITLE'] = $values->{"PAGETITLE"};
                                                 $param['NOADREFRESH'] = $values->{"NOADREFRESH"};
                                                  $param['SMARTPAGEID'] = $values->{"SMARTPAGEID"};
+                                                 $param['HEADERFILELOCATION'] = $values->{"HEADERFILELOCATION"};
                                                  $this->printLine("Importing: " . $values->{"URL"});
                                                
 						$this->__createAspFiles($param);
@@ -98,8 +99,8 @@ class ImportController extends ShellController {
                         }
 			//$source = (!$mobileFile ? ASP_DEFAULT_FILE : ASP_MOB_DEFAULT_FILE);
 			$wholeFile = file_get_contents($source);
-			$search = array("##TYPE##", "##SECTION##", "##TOOLNAME##", "##FILENAME##", "##HOST##", "##URL##", "##IVW##", "##OGSHORT##", "##OGLONG##", "##OGID##", "##PAGETITLE##", "##NOADREFRESH##", "##SMARTPAGEID##");
-			$replace = array($param['TYPE'], $param['SECTION'], $param['TOOLNAME'], $param['FILENAME'], $param['HOST'], $param['URL'], $param['IVW'], $param['OGSHORT'], $param['OGLONG'], $param['OGID'], $param['PAGETITLE'], $param['NOADREFRESH'], $param['SMARTPAGEID']);
+			$search = array("##TYPE##", "##SECTION##", "##TOOLNAME##", "##FILENAME##", "##HOST##", "##URL##", "##IVW##", "##OGSHORT##", "##OGLONG##", "##OGID##", "##PAGETITLE##", "##NOADREFRESH##", "##SMARTPAGEID##", "##HEADERFILELOCATION##");
+			$replace = array($param['TYPE'], $param['SECTION'], $param['TOOLNAME'], $param['FILENAME'], $param['HOST'], $param['URL'], $param['IVW'], $param['OGSHORT'], $param['OGLONG'], $param['OGID'], $param['PAGETITLE'], $param['NOADREFRESH'], $param['SMARTPAGEID'], $param['HEADERFILELOCATION']);
 			$fileName = $param['FILENAME'];
 			if ($mobileFile) {
 				//array_push($search, "##HOST##");

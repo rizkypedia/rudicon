@@ -36,6 +36,7 @@ class HomeController extends ShellController {
                 }
                 
                 $this->printLine($count . " recordset counted");
+                $this->printLine("File saved as " . $fileName);
                 fclose($fp);
 	}
 	

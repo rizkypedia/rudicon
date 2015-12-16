@@ -10,9 +10,7 @@ define('APP_CONFIG', APP_PATH . "/module.config.json");
 define('APP_PATH_CONTROLLER', APP_PATH . "/controller");
 
 define('MAINPATH', "D:/xampplive/htdocs/www/html5/");
-//bubbleshooter/bubbleshooter-html5/gofeminin/
 define('TOOLPATH', MAINPATH . "mahjong/mahjong_src/");
-//define('TOOLPATH', MAINPATH . "osterkalender-2015/");
 define('TOOLPATHDIST', TOOLPATH . "dist/");
 define('JSONFILENAME', TOOLPATH . 'aufemtools.json');
 define('REPLICATION_FILE', TOOLPATH . "");
@@ -20,7 +18,4 @@ define('ASP_DEFAULT_FILE', TOOLPATH . "main_asp/allfem/mahjong.asp");
 define('ASP_MOB_DEFAULT_FILE', TOOLPATH . "main_asp/allfem/mobile/mahjong.asp");
 define('ASP_BDF_DEFAULT_FILE', TOOLPATH . "main_asp/bdf/mahjong.asp");
 define('ASP_BDF_MOB_DEFAULT_FILE', TOOLPATH . "main_asp/bdf/mobile/mahjong.asp");
-
-
-
 ?>

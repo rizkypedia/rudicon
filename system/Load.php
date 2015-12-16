@@ -31,7 +31,8 @@ class Load {
 				$modelInstances[ucfirst($model)] = $ins;
 			}
 		}
-			return $modelInstances;
+                
+                return $modelInstances;
 	}
 	
 	 public function viewHelper($fileName, $pathToHelper = "", $type = "INSTANCE") {

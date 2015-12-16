@@ -44,7 +44,7 @@ class SystemShellController {
 		$versionsMsg .="\n";
 		$versionsMsg .="Contact Me @ dragonclaw79@googlemail.com";
 		$versionsMsg .="\n";
-		$versionsMsg .="Version 0.2 beta";
+		$versionsMsg .="Version 1.1";
 		$versionsMsg .="\n";
 		echo $versionsMsg;
 	}

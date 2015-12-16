@@ -41,7 +41,7 @@ class HomeController extends ShellController {
 	}
 	
 	public function quoteAction() {
-	
+            $this->printLine("testtest");
 	
 	}
         

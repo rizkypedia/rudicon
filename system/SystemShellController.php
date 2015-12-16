@@ -50,36 +50,54 @@ class SystemShellController {
 	}
 	
 	private function __moduleExists() {
-		$moduleName = $this->__extractModuleName();
+		$module = $this->__extractModuleName();
+                
+                $moduleName = $module['modulename'];
+                
 		if (in_array($moduleName, $this->__localMethods)) {
-			if (strtolower($moduleName) === "version") {
-				$this->showVersion();
-			} else {
-				$this->{strtolower($moduleName)}();
-				exit(0);
-			}
+                    if (strtolower($moduleName) === "version") {
+                        $this->showVersion();
+                        exit(0);
+                    } else {
+                        $this->{strtolower($moduleName)}();
+                        exit(0);
+                    }
+                        
 		} else {
-			if (!file_exists(START_PATH . "/" . $moduleName)) {
-				die("ERROR! Module " . $moduleName . " ist nicht bekannt\n");
-			}
+                    if (!file_exists(START_PATH . "/" . $moduleName)) {
+                        die("ERROR! Module " . $moduleName . " ist nicht bekannt\n");
+                    }
 		}
 		
 	}
 	
 	private function __extractModuleName() {
-		//return str_replace("-", "", $this->__consoleArgs[1]);
-            $param = str_replace("-","",$this->__consoleArgs[1]);
             
+            
+            $param = str_replace("-","",$this->__consoleArgs[1]);
+            $parts = array();
             if (strpos($param, ".") !== false) {
                 list($moduleName, $moduleComponent) = explode(".", $param);
+                $parts['modulename'] = $moduleName;
+                $parts['moduleComponent'] = $moduleComponent;
             } else {
-                die("Pleae use Object Notation for calling a module app: modulename.controller/action [param]");
+                  $moduleName = $param;
+                   $parts['modulename'] = $param;
+                   $parts['moduleComponent'] = "";
+               /*if (in_array($param, $this->__localMethods)) {
+                   $moduleName = $param;
+               } else {
+                   die("Pleae use Object Notation for calling a module app: modulename.controller/action [param]");
+               }*/
+                
             }
-            return $moduleName;
+            
+            return $parts;
 	}
 	
 	public function getCleanModuleName() {
-		return $this->__extractModuleName();
+            $module = $this->__extractModuleName();
+            return $module['modulename'];
 	}
 	
 	public function getArguments() {
